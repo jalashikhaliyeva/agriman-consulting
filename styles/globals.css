@@ -1,20 +1,98 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* font Archivo  */
+
+@font-face {
+  font-family: "Archivo";
+  src: url("/fonts/Archivo/static/Archivo-Thin.ttf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
 }
 
-@theme inline {
-  --color-background: var(--background);
+@font-face {
+  font-family: "Archivo";
+  src: url("/fonts/Archivo/static/Archivo-Regular.ttf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Archivo";
+  src: url("/fonts/Archivo/static/Archivo-Medium.ttf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Archivo";
+  src: url("/fonts/Archivo/static/Archivo-Bold.ttf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Archivo";
+  src: url("/fonts/Archivo/static/Archivo-SemiBold.ttf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* font Arimo  */
+
+@font-face {
+  font-family: "Arimo";
+  src: url("/fonts/Arimo/static/Arimo-SemiBold.ttf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Arimo";
+  src: url("/fonts/Arimo/static/Arimo-Bold.ttf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Arimo";
+  src: url("/fonts/Arimo/static/Arimo-Medium.ttf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Arimo";
+  src: url("/fonts/Arimo/static/Arimo-Regular.ttf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+
+@theme {
+  --font-archivo: "Archivo", sans-serif;
+  --font-arimo: "Arimo", sans-serif;
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-brand: #5E7740;
+  --color-gray: #BCBCBC;
 }
 
-@media (prefers-color-scheme: dark) {
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* #5E7740 */
+:root {
+  --background: #ebe9e9;
+  /* --foreground: #171717; */
+}
+
+@media (prefers-color-scheme: light) {
   :root {
-    --background: #0a0a0a;
+    /* --background: #0a0a0a; */
     --foreground: #ededed;
   }
 }
