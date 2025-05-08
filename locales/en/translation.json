@@ -1,0 +1,53 @@
+{
+  "nav": {
+    "about": "About us",
+    "services": "Services",
+    "suvarma": "Irrigation",
+    "career": "Career",
+    "contact": "Contact us"
+  },
+  "contact_us": "Contact us",
+  "view_more": "View more",
+
+  "send": "Send",
+  "success_application": "Your application has been submitted successfully!",
+  "error_generic": "An error occurred. Please try again.",
+  "error_submission": "Submission error:",
+  "success_message": "Your message has been sent successfully!",
+  "faq_desc": "Learn more about the company and team.",
+  "successful_projects": "Our Successful Projects",
+  "projects_description": "We have served dozens of local and international clients. Take a look at some of our projects.",
+  "latest_updates": "Latest Updates and Recommendations",
+  "news_blog": "News / Blog",
+  "follow_blog": "Follow our blog and stay updated!",
+  "agri_updates_intro": "We introduce you to the latest developments in agriculture. Find expert advice on effective productivity, irrigation technologies and soil analysis here!",
+  "slogan": "From Soil to Harvest — With You Every Step",
+  "mission": "We add value to your land with smart agricultural solutions. We specialize in efficient irrigation systems, soil analysis, fertilization, and technical consultancy.",
+  "company": "Company",
+  "socials": "Socials",
+  "solution_title": "Find the Perfect Solution for Your Project",
+  "get_offer": "Get an Offer",
+  "copyright": "All rights reserved.",
+  "terms": "Terms & Conditions",
+  "privacy": "Privacy Policy",
+  "agreement": "Agreement",
+   "service_inquiry": "Interested in our services, pricing, or collaboration opportunities? Just fill out the form - our team will contact you shortly.",
+   "formErrors": {
+    "nameRequired": "Name is required",
+    "surnameRequired": "Surname is required",
+    "emailRequired": "Email is required",
+    "validEmail": "Please enter a valid email",
+    "professionRequired": "Profession is required",
+    "messageRequired": "Message is required",
+    "cvRequired": "CV is required",
+    "subjectRequired": "Subject is required",
+    "numberRequired": "Number is required"
+  },
+
+  "jobCategories": "Technical fields, agronomy, sales, design, and more",
+  "uploadCvPrompt": "Upload CV to the",
+  "formSubmit": {
+    "sending": "Sending...",
+    "send": "Send"
+  }
+}

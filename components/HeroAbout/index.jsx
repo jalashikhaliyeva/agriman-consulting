@@ -105,8 +105,8 @@ function HeroAbout({ slidesData, currentSlide, setCurrentSlide }) {
   return (
     <Container>
       <div className="w-full mt-20 flex flex-col lg:flex-row justify-between items-center h-[380px] md:h-[600px] py-10 lg:py-0">
-        <div className="flex max-w-[700px] flex-col text-white mb-10 lg:mb-0 w-full lg:w-auto text-center lg:text-left">
-          <button className="relative py-3 px-7 mb-6 w-[140px] font-archivo text-base text-white rounded-4xl backdrop-blur-md bg-white/30 mx-auto lg:mx-0">
+        <div className="flex max-w-[700px] flex-col-reverse md:flex-col pt-10 md:pt-2 text-white mb-10 lg:mb-0 w-full lg:w-auto text-center lg:text-left">
+          <button className="relative py-3 px-7 mb-6 w-[140px] font-archivo text-base text-white rounded-4xl bg-[#5E7740] mx-auto lg:mx-0">
             Contact Us
             <span className="absolute left-[120px] top-1/2 -translate-y-1/2 bg-white rounded-full px-2 py-1">
               <svg
@@ -220,7 +220,7 @@ function HeroAbout({ slidesData, currentSlide, setCurrentSlide }) {
                   setIsAutoPlaying(false);
                   setTimeout(() => setIsAutoPlaying(true), 10000);
                 }}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                className={`w-1 h-1 rounded-full transition-all duration-300 ${
                   index === currentSlide
                     ? "bg-white scale-125"
                     : "bg-white/50 hover:bg-white/70"
@@ -239,7 +239,7 @@ function HeroAbout({ slidesData, currentSlide, setCurrentSlide }) {
                   setIsAutoPlaying(false);
                   setTimeout(() => setIsAutoPlaying(true), 10000);
                 }}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                className={`w-1 h-1 rounded-full transition-all duration-300 ${
                   index === currentSlide
                     ? "bg-white scale-125"
                     : "bg-white/50 hover:bg-white/70"

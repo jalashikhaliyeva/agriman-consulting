@@ -2,11 +2,14 @@ import React from "react";
 import TabButton from "../TabButton";
 import Image from "next/image";
 import ContactBanner from "../ContactBanner";
+import { useTranslation } from "react-i18next";
 
-function AboutSection() {
+function AboutSection({ about, banner }) {
+  const { t } = useTranslation();
+
   return (
-    <div className="bg-white rounded-3xl p-6 my-6">
-      <TabButton>About us</TabButton>
+    <div data-aos="fade-up" className="bg-white  rounded-3xl p-6 ">
+      <TabButton>{t("nav.about")}</TabButton>
 
       <div className="flex flex-col gap-10 mt-6">
         {/* ——— ROW 1 ——— */}
@@ -14,7 +17,7 @@ function AboutSection() {
           {/* Image half */}
           <div className="relative w-full md:w-1/2 h-[200px] md:h-[400px] rounded-3xl overflow-hidden shadow-lg">
             <Image
-              src="/images/hero/hero3.jpg"
+              src={about?.data?.[0]?.image}
               alt="About Us"
               fill
               className="object-cover"
@@ -28,11 +31,11 @@ function AboutSection() {
               _________
             </p>
             <h2 className="mt-2 text-4xl pb-5 font-arimo text-black text-center md:text-left">
-              1914 translation by H. Rackham
+              {about?.data?.[0]?.title || "1914 translation by H. Rackham"}
             </h2>
             <p className="text-lg text-neutral-400 font-arimo text-center md:text-left">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry… Aldus PageMaker including versions of Lorem Ipsum.
+              {about?.data?.[0]?.description ||
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry... Aldus PageMaker including versions of Lorem Ipsum."}
             </p>
           </div>
         </div>
@@ -42,7 +45,7 @@ function AboutSection() {
           {/* Image half */}
           <div className="relative w-full md:w-1/2 h-[200px] md:h-[400px] rounded-3xl overflow-hidden shadow-lg">
             <Image
-              src="/images/hero/hero3.jpg"
+              src={about?.data?.[1]?.image}
               alt="About Us"
               fill
               className="object-cover"
@@ -56,11 +59,12 @@ function AboutSection() {
               _________
             </p>
             <h2 className="mt-2 pb-5 text-4xl font-arimo text-black text-center md:text-right">
-              1914 translation by H. Rackham
+              {about?.data?.[1]?.title ||
+                "The standard Lorem Ipsum passage, used since the 1500s"}
             </h2>
             <p className="text-lg text-neutral-400 font-arimo text-center md:text-right">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry… Aldus PageMaker including versions of Lorem Ipsum.
+              {about?.data?.[1]?.description ||
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry... Aldus PageMaker including versions of Lorem Ipsum."}
             </p>
           </div>
         </div>
@@ -70,7 +74,7 @@ function AboutSection() {
           {/* Image half */}
           <div className="relative w-full md:w-1/2 h-[200px] md:h-[400px] rounded-3xl overflow-hidden shadow-lg">
             <Image
-              src="/images/hero/hero3.jpg"
+              src={about?.data?.[2]?.image}
               alt="About Us"
               fill
               className="object-cover"
@@ -84,16 +88,17 @@ function AboutSection() {
               _________
             </p>
             <h2 className="mt-2 text-4xl pb-5 font-arimo text-black text-center md:text-left">
-              1914 translation by H. Rackham
+              {about?.data?.[2]?.title ||
+                'Section 1.10.33 of "de Finibus Bonorum et Malorum"'}
             </h2>
             <p className="text-lg text-neutral-400 font-arimo text-center md:text-left">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry… Aldus PageMaker including versions of Lorem Ipsum.
+              {about?.data?.[2]?.description ||
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry... Aldus PageMaker including versions of Lorem Ipsum."}
             </p>
           </div>
         </div>
 
-        <ContactBanner />
+        <ContactBanner banner={banner} />
       </div>
     </div>
   );

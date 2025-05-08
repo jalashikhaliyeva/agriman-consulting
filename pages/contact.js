@@ -8,43 +8,114 @@ import HeroAbout from "@/components/HeroAbout";
 import ServicesPageSection from "@/components/ServicesPageSection";
 import LogoMarquee from "@/components/LogoMarquee";
 import ContactUsSection from "@/components/ContactUsSection";
+import {
+  getCategories,
+  getContact,
+  getHero,
+  getProjects,
+  getSettings,
+  getSocialLinks,
+} from "@/lib/api";
+import HeroAboutSingle from "@/components/HeroAboutSingle";
+import Head from "next/head";
+import LogoMarqueeSecond from "@/components/LogoMarqueeSecond";
+import HeroAboutSingleContact from "@/components/HeroAboutSingleContact";
 
-export default function Contact() {
-  const mockLandingInfo = [
-    {
-      title: "Welcome to Our Platform",
-      desc: "Discover amazing features and services that will transform your experience. <strong>Join us today!</strong>",
-      heroTitle: "Aqıllı Kənd Təsərrüfatı İlə Gələcəyə Doğru",
-      heroDesc:
-        "Əsas məqsədimiz kənd təsərrüfatı müəssisələrini, sahibkarları və fermerləri dəstəkləməkdir – ekspert səviyyəsində becərmə üzrə konsaltinq xidməti göstərərək, yüksək keyfiyyətli və bol məhsuldarlığı təmin etməkdir.",
-      button_text: "Get Started",
+export async function getServerSideProps(context) {
+  const lang = context.locale || "az";
+  try {
+    const settings = await getSettings(lang);
+    const hero = await getHero(lang);
+    const categories = await getCategories(lang);
+    const projects = await getProjects(lang);
+    const contact = await getContact(lang);
+    const socialLinks = await getSocialLinks(lang);
 
-      image: "/images/hero/hero2.jpg",
-    },
-    {
-      title: "Premium Solutions",
-      desc: "Our cutting-edge technology provides the best solutions for your needs. <em>Try it now!</em>",
-      heroTitle: "Second Slide Title",
-      heroDesc:
-        "Second slide description text would go here with different content.",
-      button_text: "Learn More",
-      image: "/images/hero/hero22.jpg",
-    },
-    {
-      title: "Join Our Community",
-      desc: "Become part of a growing network of professionals and enthusiasts. <u>Register now</u>!",
-      heroTitle: "Third Slide Title",
-      heroDesc:
-        "Third slide description text would go here with different content.",
-      button_text: "Get Started",
-      image: "/images/services/img1.jpg",
-    },
-  ];
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const bgUrl = mockLandingInfo[currentSlide].image;
+    return {
+      props: {
+        hero,
+        categories,
+        settings,
+        projects,
+        socialLinks,
+        contact,
+      },
+    };
+  } catch (error) {
+    return {
+      props: {
+        hero: null,
+        categories: null,
+        settings: null,
+        projects: null,
+        contact: null,
+        socialLinks: null,
+      },
+    };
+  }
+}
+export default function Contact({
+  hero,
+  categories,
+  settings,
+  projects,
+  contact,
+  socialLinks,
+}) {
+  const careerMeta =
+    settings?.meta_tags?.find((tag) => tag.title === "Contact") || {};
+  const breadcrumbData = settings?.breadcrumb;
+  const servicesBreadcrumb = breadcrumbData?.find(
+    (item) => item.page === "Contact"
+  );
+
+  const contactSectionData = settings?.section_title?.find(
+    (section) => section.name === "Contact"
+  );
+
+  let bgUrl = servicesBreadcrumb?.image || "/images/hero/hero2.jpg";
+  if (!bgUrl.startsWith("http://") && !bgUrl.startsWith("https://")) {
+    bgUrl = bgUrl;
+  }
 
   return (
     <>
+      <Head>
+        <title>
+          {careerMeta.meta_title || "AGRIMAN - Smart Agricultural Solutions"}
+        </title>
+        <meta
+          name="description"
+          content={
+            careerMeta.meta_description ||
+            "Default description about agricultural services"
+          }
+        />
+        <meta
+          name="keywords"
+          content={
+            careerMeta.meta_keywords ||
+            "agriculture, farming, irrigation, smart farming"
+          }
+        />
+
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:title"
+          content={
+            careerMeta.meta_title || "AGRIMAN - Smart Agricultural Solutions"
+          }
+        />
+        <meta
+          property="og:description"
+          content={
+            careerMeta.meta_description ||
+            "Default description about agricultural services"
+          }
+        />
+        <meta property="og:image" content={settings?.logo?.logo} />
+        <meta property="og:url" content="https://yourwebsite.com" />
+      </Head>
       <main className="relative rounded-b-4xl overflow-hidden">
         <div className="absolute inset-0 z-0">
           <div
@@ -55,39 +126,41 @@ export default function Contact() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/60" />
         </div>
 
-        <div className="relative z-20">
-          <Header />
+        <div className="relative">
+          <Header categories={categories?.data} settings={settings} />
 
-          <HeroAbout
-            slidesData={mockLandingInfo.map((item) => ({
-              stats: {
-                projects: "150+",
-                satisfaction: "99%",
-              },
-              description: item.desc,
-            }))}
-            currentSlide={currentSlide}
-            setCurrentSlide={setCurrentSlide}
-          />
+          <div className="relative z-10">
+            <HeroAboutSingleContact data={servicesBreadcrumb} />
+          </div>
         </div>
       </main>
+
+      <div className="relative -mt-32 md:-mt-36 lg:-mt-28 z-30">
+        <Container>
+          <ContactUsSection contact={contactSectionData} data={contact.data} />
+        </Container>
+      </div>
       <Container>
-        <ContactUsSection />
+        <div data-aos="fade-up">
+          <iframe
+            width="100%"
+            height="450"
+            src={contact.data.map}
+            className="rounded-3xl"
+          />
+        </div>
       </Container>
-      <iframe
-        width="100%"
-        height="450"
-        src="https://www.openstreetmap.org/export/embed.html?bbox=-74.025,40.700,-73.975,40.750&layer=mapnik&marker=40.7128,-74.0060"
-        style={{ border: "none" }}
-        title="OpenStreetMap Embed"
-      />
 
       <Container>
-        <LogoMarquee />
+        <LogoMarqueeSecond projects={projects} />
       </Container>
 
       <Container>
-        <Footer />
+        <Footer
+          socialLinks={socialLinks.data}
+          contact={contact.data}
+          settings={settings}
+        />
       </Container>
     </>
   );

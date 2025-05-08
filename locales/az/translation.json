@@ -1,0 +1,52 @@
+{
+  "nav": {
+    "about": "Haqqımızda",
+    "services": "Xidmətlər",
+    "suvarma": "Suvarma",
+    "career": "Karyera",
+    "contact": "Əlaqə"
+  },
+  "contact_us": "Əlaqə saxlayın",
+  "view_more": "Daha çox",
+  "send": "Göndər",
+  "success_application": "Müraciətiniz uğurla təqdim edildi!",
+  "error_generic": "Xəta baş verdi. Zəhmət olmasa yenidən cəhd edin.",
+  "error_submission": "Təqdim xətası:",
+  "success_message": "Mesajınız uğurla göndərildi!",
+  "faq_desc": "Şirkət və komanda haqqında daha çox öyrənin.",
+  "successful_projects": "Uğurlu Layihələrimiz",
+  "projects_description": "Onlarla yerli və beynəlxalq müştəriyə xidmət göstərmişik. Bəzi layihələrə nəzər salın.",
+  "latest_updates": "Son Yeniliklər və Tövsiyələr",
+  "news_blog": "Xəbərlər / Blog",
+  "follow_blog": "Bloqu izləyin və yeniliklərdən xəbərdar olun!",
+  "agri_updates_intro": "Sizi kənd təsərrüfatı sahəsində baş verən ən son yeniliklərlə tanış edirik. Effektiv məhsuldarlıq, suvarma texnologiyaları və torpaq analizi sahəsində mütəxəssis tövsiyələri burada!",
+  "slogan": "Torpaqdan Məhsula — Hər Addımda Sizinləyik",
+  "mission": "Aqılı kənd təsərrüfatı həlləri ilə torpağınıza dəyər qatırıq. Effektiv suvarma sistemləri, torpaq analizi, gübələmə və texniki məsləhətlər üzrə ixtisaslaşmışıq.",
+  "company": "Şirkət",
+  "socials": "Sosial şəbəkələr",
+  "solution_title": "Layihəniz Üçün Ən Uyğun Həlli tapın",
+  "get_offer": "Təklif Alın",
+  "copyright": "Bütün hüquqlar qorunur.",
+  "terms": "Şərtlər və Qaydalar",
+  "privacy": "Məxfilik Siyasəti",
+  "agreement": "Müqavilə",
+  "service_inquiry": "Xidmətlərimiz, qiymət təklifi və əməkdaşlıq imkanları ilə maraqlanırsınız? Sadəcə formu doldurun - komandamız qısa zamanda sizinlə əlaqə saxlayacaq.",
+  "formErrors": {
+    "nameRequired": "Ad tələb olunur",
+    "surnameRequired": "Soyad tələb olunur",
+    "emailRequired": "E-poçt tələb olunur",
+    "validEmail": "Zəhmət olmasa, düzgün e-poçt daxil edin",
+    "professionRequired": "Peşə tələb olunur",
+    "messageRequired": "Mesaj tələb olunur",
+    "cvRequired": "CV tələb olunur",
+    "subjectRequired": "Mövzu tələb olunur",
+    "numberRequired": "Nömrə tələb olunur"
+  },
+  "jobCategories": "Texniki sahələr, aqronomika, satış, layihələndirmə və daha çox",
+  "uploadCvPrompt": "CV-ni yüklə",
+  "formSubmit": {
+    "sending": "Göndərilir...",
+    "send": "Göndər"
+  }
+ 
+}

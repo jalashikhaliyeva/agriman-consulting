@@ -7,76 +7,173 @@ import HeroAbout from "@/components/HeroAbout";
 import ServicesPageSection from "@/components/ServicesPageSection";
 import LogoMarquee from "@/components/LogoMarquee";
 import AboutSection from "@/components/AboutSection";
+import {
+  getAbout,
+  getBanner,
+  getBlogs,
+  getCategories,
+  getContact,
+  getHero,
+  getProjects,
+  getSettings,
+  getSocialLinks,
+} from "@/lib/api";
+import Head from "next/head";
+import HeroParent from "@/components/HeroParent";
 
-export default function About() {
-  const mockLandingInfo = [
-    {
-      title: "Welcome to Our Platform",
-      desc: "Discover amazing features and services that will transform your experience. <strong>Join us today!</strong>",
-      heroTitle: "Aqıllı Kənd Təsərrüfatı İlə Gələcəyə Doğru",
-      heroDesc:
-        "Əsas məqsədimiz kənd təsərrüfatı müəssisələrini, sahibkarları və fermerləri dəstəkləməkdir – ekspert səviyyəsində becərmə üzrə konsaltinq xidməti göstərərək, yüksək keyfiyyətli və bol məhsuldarlığı təmin etməkdir.",
-      button_text: "Get Started",
+export async function getServerSideProps(context) {
+  const lang = context.locale || "az";
+  try {
+    const settings = await getSettings(lang);
+    const about = await getAbout(lang);
+    const hero = await getHero(lang);
+    const categories = await getCategories(lang);
+    const projects = await getProjects(lang);
+    const blogs = await getBlogs(lang);
+    const contact = await getContact(lang);
+    const socialLinks = await getSocialLinks(lang);
+    const banner = await getBanner(lang);
 
-      image: "/images/hero/hero2.jpg",
-    },
-    {
-      title: "Premium Solutions",
-      desc: "Our cutting-edge technology provides the best solutions for your needs. <em>Try it now!</em>",
-      heroTitle: "Second Slide Title",
-      heroDesc:
-        "Second slide description text would go here with different content.",
-      button_text: "Learn More",
-      image: "/images/hero/hero22.jpg",
-    },
-    {
-      title: "Join Our Community",
-      desc: "Become part of a growing network of professionals and enthusiasts. <u>Register now</u>!",
-      heroTitle: "Third Slide Title",
-      heroDesc:
-        "Third slide description text would go here with different content.",
-      button_text: "Get Started",
-      image: "/images/services/img1.jpg",
-    },
-  ];
+    return {
+      props: {
+        hero,
+        categories,
+        projects,
+        blogs,
+        settings,
+        about,
+        socialLinks,
+        contact,
+        banner,
+      },
+    };
+  } catch (error) {
+    return {
+      props: {
+        hero: null,
+        categories: null,
+        projects: null,
+        blogs: null,
+        settings: null,
+        about: null,
+        contact: null,
+        socialLinks: null,
+        banner: null,
+      },
+    };
+  }
+}
+export default function About({
+  hero,
+  categories,
+  projects,
+  blogs,
+  settings,
+  contact,
+  socialLinks,
+  banner,
+  about,
+}) {
+  const aboutMeta =
+    settings?.meta_tags?.find((tag) => tag.title === "About") || {};
+
+  const heroData = hero?.hero;
+  const breadcrumbData = hero?.breadcrumb;
   const [currentSlide, setCurrentSlide] = useState(0);
-  const bgUrl = mockLandingInfo[currentSlide].image;
+
+  let bgUrl = heroData[currentSlide]?.image || "/images/hero/hero2.jpg";
+  if (!bgUrl.startsWith("http://") && !bgUrl.startsWith("https://")) {
+    bgUrl = bgUrl;
+  }
+
+  const slidesData = heroData.map((item) => ({
+    stats: {
+      projects: breadcrumbData.number_1 + (breadcrumbData.text_1 ? "" : "+"),
+      satisfaction:
+        breadcrumbData.number_2 + (breadcrumbData.text_2 ? "%" : ""),
+    },
+    description: breadcrumbData.description,
+    heroTitle: item.title,
+    heroDesc: item.description,
+  }));
 
   return (
     <>
+      <Head>
+        <title>
+          {aboutMeta.meta_title || "AGRIMAN - Smart Agricultural Solutions"}
+        </title>
+        <meta
+          name="description"
+          content={
+            aboutMeta.meta_description ||
+            "Default description about agricultural services"
+          }
+        />
+        <meta
+          name="keywords"
+          content={
+            aboutMeta.meta_keywords ||
+            "agriculture, farming, irrigation, smart farming"
+          }
+        />
+
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:title"
+          content={
+            aboutMeta.meta_title || "AGRIMAN - Smart Agricultural Solutions"
+          }
+        />
+        <meta
+          property="og:description"
+          content={
+            aboutMeta.meta_description ||
+            "Default description about agricultural services"
+          }
+        />
+        <meta property="og:image" content={settings?.logo?.logo} />
+        <meta property="og:url" content="https://yourwebsite.com" />
+      </Head>
       <main className="relative rounded-b-4xl overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${bgUrl})` }}
-          />
-
-          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/60" />
+          {bgUrl && (
+            <div
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: `url("${bgUrl}")` }}
+            />
+          )}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/50" />
         </div>
 
-        <div className="relative z-20">
-          <Header />
+        <div className="relative">
+          <Header categories={categories.data} settings={settings} />
 
-          <Hero
-            slidesData={mockLandingInfo.map((item) => ({
-              stats: {
-                projects: "150+",
-                satisfaction: "99%",
-              },
-              description: item.desc,
-            }))}
-            currentSlide={currentSlide}
-            setCurrentSlide={setCurrentSlide}
-          />
+          <div className="relative z-10">
+            <HeroParent
+              slidesData={slidesData}
+              currentSlide={currentSlide}
+              setCurrentSlide={setCurrentSlide}
+              heroData={heroData}
+              breadcrumbData={breadcrumbData}
+            />
+          </div>
         </div>
       </main>
 
-      <Container>
-        <AboutSection />
-      </Container>
+      {/* AboutSection overlapping with Hero */}
+      <div className="relative -mt-32 md:-mt-36 lg:-mt-24 z-30">
+        <Container>
+          <AboutSection banner={banner} about={about} />
+        </Container>
+      </div>
 
       <Container>
-        <Footer />
+        <Footer
+          socialLinks={socialLinks.data}
+          contact={contact.data}
+          settings={settings}
+        />
       </Container>
     </>
   );
