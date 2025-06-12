@@ -4,8 +4,20 @@
     "services": "Services",
     "suvarma": "Irrigation",
     "career": "Career",
-    "contact": "Contact us"
+    "contact": "Contact us",
+    "news_blog": "News / Blog",
+    "portfolio": "Portfolio"
   },
+  "contact": {
+    "name": "Name",
+    "surname": "Surname",
+    "email": "Email",
+    "phone": "Phone",
+    "about": "About",
+    "working_hour": "Working hours",
+    "message": "Message",
+    "profession": "Profession"
+  },  
   "contact_us": "Contact us",
   "view_more": "View more",
 
@@ -49,5 +61,17 @@
   "formSubmit": {
     "sending": "Sending...",
     "send": "Send"
-  }
+  },
+  "contactBannerService": {
+    "title": "For your irrigation needs",
+    "get_offer": "Get an offer"
+  },
+  "news": {
+    "title": "Our Successes",
+    "project": "Project",
+    "satisfaction": "Satisfaction",
+    "description": "We offer innovative solutions in irrigation systems, soil analysis, fertilization, and technical consultancy.",
+    "description2": "As AGRIMAN team, we have proven that modern agriculture is not just about technology – it requires proper analysis, professional planning, and continuous support."
+  },
+  "contact_us": "Contact us"
 }

@@ -7,6 +7,8 @@ import Spinner from "@/components/Spinner";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import AOSInitializer from "@/shared/utils/AOSInitializer";
+import React from "react";
+
 
 export default function App({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);

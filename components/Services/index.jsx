@@ -61,7 +61,12 @@ function Services({ data }) {
 
     try {
       const response = await fetch(
-        `https://agriman.markup.az/api/service/${slug}`
+        `https://admin.agrimanconsulting.com/api/service/${slug}`,
+        {
+          headers: {
+            "Accept-Language": i18n.language,
+          },
+        }
       );
 
       if (!response.ok) {
@@ -88,11 +93,34 @@ function Services({ data }) {
     <>
       {loading && <Spinner />}
 
-      <div data-aos="fade-up" className="bg-white p-4 md:p-6 rounded-3xl md:rounded-4xl">
+      <div className="bg-white p-4 md:p-6 rounded-3xl md:rounded-4xl">
         <div>
-          <TabButton>{data?.name}</TabButton>
+          <div className="hidden md:flex">
+            <TabButton>{data?.name}</TabButton>
+          </div>
 
-          <div className="flex items-center justify-center pb-4">
+          <div className="py-4 flex  flex-row  md:hidden justify-between items-center">
+            <TabButton>{data?.name}</TabButton>
+            <div className="flex px-5 float-animation">
+              <svg
+                width="46"
+                height="19"
+                viewBox="0 0 46 19"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M2 2.17426L23.1742 16.5647L44.3485 2.17426"
+                  stroke="#90A674"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <div className="hidden md:flex items-center justify-center pb-4 float-animation">
             <svg
               width="46"
               height="19"
@@ -175,7 +203,7 @@ function Services({ data }) {
                         xmlns="http://www.w3.org/2000/svg"
                       >
                         <path
-                          d="M-2.3365e-05 7.07107L7.07104 0L4.40193 7.16889L7.07104 14.1421L-2.3365e-05 7.07107Z"
+                          d="M7.50002 7.42893L0.428955 14.5L3.09807 7.33111L0.428955 0.357865L7.50002 7.42893Z"
                           fill="white"
                         />
                       </svg>

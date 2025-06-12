@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     unoptimized: false,
-    domains: ["agriman.markup.az"],
+    domains: ["admin.agrimanconsulting.com"], 
   },
   i18n: {
     locales: ["az", "en", "ru"],

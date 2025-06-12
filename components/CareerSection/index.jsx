@@ -199,7 +199,7 @@ function CareerSection({ data, contact }) {
                   <input
                     type="text"
                     name="name"
-                    placeholder="Name"
+                    placeholder={t("contact.name")}
                     value={formData.name}
                     onChange={handleChange}
                     className={`w-full px-4 py-2 md:py-3 rounded-2xl border ${
@@ -214,7 +214,7 @@ function CareerSection({ data, contact }) {
                   <input
                     type="text"
                     name="surname"
-                    placeholder="Surname"
+                    placeholder={t("contact.surname")}
                     value={formData.surname}
                     onChange={handleChange}
                     className={`w-full px-4 py-2 md:py-3 rounded-2xl border ${
@@ -232,7 +232,7 @@ function CareerSection({ data, contact }) {
                 <input
                   type="email"
                   name="email"
-                  placeholder="Email"
+                  placeholder={t("contact.email")}
                   value={formData.email}
                   onChange={handleChange}
                   className={`w-full px-4 py-2 md:py-3 rounded-2xl border ${
@@ -247,7 +247,7 @@ function CareerSection({ data, contact }) {
                 <input
                   type="text"
                   name="profession"
-                  placeholder="Profession"
+                  placeholder={t("contact.profession")}
                   value={formData.profession}
                   onChange={handleChange}
                   className={`w-full px-4 py-2 md:py-3 rounded-2xl border ${
@@ -263,7 +263,7 @@ function CareerSection({ data, contact }) {
               <div>
                 <textarea
                   name="message"
-                  placeholder="Message"
+                  placeholder={t("contact.message")}
                   rows={4}
                   value={formData.message}
                   onChange={handleChange}
@@ -285,7 +285,7 @@ function CareerSection({ data, contact }) {
               <div className="flex flex-col md:flex-row gap-5 w-full justify-between items-center">
                 <div
                   onClick={triggerFileInput}
-                  className={`bg-white flex flex-row items-center gap-2 p-2 rounded-4xl cursor-pointer text-neutral-500 whitespace-nowrap overflow-hidden ${
+                  className={`bg-white flex flex-row  items-center gap-2 px-4 py-2 md:px-6 md:py-3 rounded-4xl cursor-pointer text-neutral-500 whitespace-nowrap overflow-hidden w-full md:max-w-[340px] md:mx-0 mx-auto text-sm  ${
                     errors.cv ? "border border-red-500" : ""
                   }`}
                 >

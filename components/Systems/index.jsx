@@ -20,7 +20,7 @@ function Systems({ data }) {
   ];
 
   // Extract text content and split into words
-  const textContent = data.title ? data.title.replace(/<[^>]*>/g, "") : "";
+  const textContent = data?.title ? data.title.replace(/<[^>]*>/g, "") : "";
   const words = textContent.trim().split(/\s+/);
 
   // Get first word and remaining text
@@ -52,7 +52,7 @@ function Systems({ data }) {
 
     try {
       const response = await fetch(
-        `https://agriman.markup.az/api/service/${slug}`
+        `https://admin.agrimanconsulting.com/api/service/${slug}`
       );
 
       if (!response.ok) {

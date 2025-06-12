@@ -1,9 +1,8 @@
-import { useState } from "react";
 import Header from "@/components/Header";
 import Container from "@/components/Container";
 import Footer from "@/components/Footer";
-import LogoMarquee from "@/components/LogoMarquee";
-import CareerSection from "@/components/CareerSection";
+import React from "react";
+
 import {
   getCategories,
   getHero,
@@ -13,7 +12,6 @@ import {
   getSocialLinks,
   getTerms,
 } from "@/lib/api";
-import HeroAboutSingle from "@/components/HeroAboutSingle";
 import Head from "next/head";
 
 export async function getServerSideProps(context) {

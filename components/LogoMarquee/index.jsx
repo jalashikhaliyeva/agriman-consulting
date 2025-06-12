@@ -1,6 +1,9 @@
 import Image from "next/image";
 import { useEffect, useState, useRef } from "react";
 import { useTranslation } from "react-i18next";
+import React from "react";
+import Link from "next/link";
+
 
 export default function LogoMarquee({ projects }) {
   const { t } = useTranslation();
@@ -57,58 +60,56 @@ export default function LogoMarquee({ projects }) {
           </p>
         </div>
 
-        <div className="relative flex flex-col">
-          <div className="flex items-center mt-8 mb-2 gap-[100px]">
-            <button
-              onClick={() => router.push("/contact")} 
-              className="relative mt-4 whitespace-nowrap cursor-pointer py-2 md:py-3 px-5 md:px-7 font-archivo text-sm md:text-base text-white rounded-4xl backdrop-blur-md bg-black mx-auto lg:mx-0"
-            >
-              {t("view_more")}
-              <span className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 bg-brand rounded-full p-1">
-                <svg
-                  width="16"
-                  height="15"
-                  viewBox="0 0 8 15"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M7.50002 7.42893L0.428955 14.5L3.09807 7.33111L0.428955 0.357865L7.50002 7.42893Z"
-                    fill="white"
-                  />
-                </svg>
-              </span>
-            </button>
-
-            <div className="rounded-lg p-4 overflow-hidden flex-grow ml-4">
-              <div
-                className={`flex space-x-12 ${
-                  isVisible ? "animate-marquee" : ""
-                }`}
-                style={{ width: "max-content" }}
+        <div className="relative flex flex-col md:flex-row items-center mt-8 mb-2 gap-0 md:gap-[100px]">
+          <Link
+            href="/portfolio"
+            className="relative mb-4 md:mb-0 md:mt-4 whitespace-nowrap cursor-pointer py-2 md:py-3 px-5 md:px-7 font-archivo text-sm md:text-base text-white rounded-4xl backdrop-blur-md bg-black md:mx-0 text-left md:text-center"
+            style={{ alignSelf: 'flex-start' }}
+          >
+            {t("view_more")}
+            <span className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 bg-brand rounded-full p-1">
+              <svg
+                width="16"
+                height="15"
+                viewBox="0 0 8 15"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                {repeatedLogos.map((logo, index) => (
-                  <a
-                    key={`${logo.id || logo.name}-${index}`}
-                    href={
-                      logo.link.startsWith("http")
-                        ? logo.link
-                        : `https://${logo.link}`
-                    }
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center min-w-[90px] hover:opacity-80 transition-opacity"
-                  >
-                    <Image
-                      width={200}
-                      height={200}
-                      src={logo.image}
-                      alt={logo.name}
-                      className="w-[90px] max-w-full object-contain grayscale hover:grayscale-0" // Boz rəng üçün grayscale əlavə edildi
-                    />
-                  </a>
-                ))}
-              </div>
+                <path
+                  d="M7.50002 7.42893L0.428955 14.5L3.09807 7.33111L0.428955 0.357865L7.50002 7.42893Z"
+                  fill="white"
+                />
+              </svg>
+            </span>
+          </Link>
+          <div className="rounded-lg p-4 overflow-hidden w-full md:flex-grow md:ml-4">
+            <div
+              className={`flex space-x-12 ${
+                isVisible ? "animate-marquee" : ""
+              }`}
+              style={{ width: "max-content" }}
+            >
+              {repeatedLogos.map((logo, index) => (
+                <a
+                  key={`${logo.id || logo.name}-${index}`}
+                  href={
+                    logo.link.startsWith("http")
+                      ? logo.link
+                      : `https://${logo.link}`
+                  }
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center min-w-[90px] hover:opacity-80 transition-opacity"
+                >
+                  <Image
+                    width={200}
+                    height={200}
+                    src={logo.image}
+                    alt={logo.name}
+                    className="w-[90px] max-w-full object-contain grayscale hover:grayscale-0" 
+                  />
+                </a>
+              ))}
             </div>
           </div>
         </div>
@@ -130,7 +131,7 @@ export default function LogoMarquee({ projects }) {
         }
 
         .grayscale {
-          filter: grayscale(100%); /* Logoları boz rəngə çevirir */
+          filter: grayscale(100%); 
         }
       `}</style>
     </div>

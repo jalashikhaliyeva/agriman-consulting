@@ -31,7 +31,7 @@ function HeroHome({ landingInfo, currentSlide, setCurrentSlide }) {
     emblaApi.on("select", onSelect);
 
     const autoplay = () => emblaApi && emblaApi.scrollNext();
-    const autoplayInterval = setInterval(autoplay, 4000);
+    const autoplayInterval = setInterval(autoplay, 8000);
     return () => clearInterval(autoplayInterval);
   }, [emblaApi, onSelect]);
 

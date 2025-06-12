@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Header from "@/components/Header";
 import Container from "@/components/Container";
 import Footer from "@/components/Footer";
@@ -14,6 +13,7 @@ import {
 } from "@/lib/api";
 import HeroAboutSingle from "@/components/HeroAboutSingle";
 import Head from "next/head";
+import React from "react";
 
 export async function getServerSideProps(context) {
   const lang = context.locale || "az";

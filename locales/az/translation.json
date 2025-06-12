@@ -4,8 +4,20 @@
     "services": "Xidmətlər",
     "suvarma": "Suvarma",
     "career": "Karyera",
-    "contact": "Əlaqə"
+    "contact": "Əlaqə",
+    "news_blog": "Xəbərlər / Blog",
+    "portfolio": "Portfolio"
   },
+  "contact": {
+    "name": "Ad",
+    "surname": "Soyad",
+    "email": "E-poçt",
+    "phone": "Telefon",
+    "about": "Haqqında",
+    "working_hour": "İş saatları",
+    "message": "Mesaj",
+    "profession": "Peşə"
+  },  
   "contact_us": "Əlaqə saxlayın",
   "view_more": "Daha çox",
   "send": "Göndər",
@@ -21,7 +33,7 @@
   "follow_blog": "Bloqu izləyin və yeniliklərdən xəbərdar olun!",
   "agri_updates_intro": "Sizi kənd təsərrüfatı sahəsində baş verən ən son yeniliklərlə tanış edirik. Effektiv məhsuldarlıq, suvarma texnologiyaları və torpaq analizi sahəsində mütəxəssis tövsiyələri burada!",
   "slogan": "Torpaqdan Məhsula — Hər Addımda Sizinləyik",
-  "mission": "Aqılı kənd təsərrüfatı həlləri ilə torpağınıza dəyər qatırıq. Effektiv suvarma sistemləri, torpaq analizi, gübələmə və texniki məsləhətlər üzrə ixtisaslaşmışıq.",
+  "mission": "Ağıllı kənd təsərrüfatı həlləri ilə torpağınıza dəyər qatırıq. Effektiv suvarma sistemləri, torpaq analizi, gübələmə və texniki məsləhətlər üzrə ixtisaslaşmışıq.",
   "company": "Şirkət",
   "socials": "Sosial şəbəkələr",
   "solution_title": "Layihəniz Üçün Ən Uyğun Həlli tapın",
@@ -47,6 +59,19 @@
   "formSubmit": {
     "sending": "Göndərilir...",
     "send": "Göndər"
-  }
+  },
+  "contactBannerService": {
+    "title": "Suvarma uzre  özünüze uygun",
+    "get_offer": "Təklif alın"
+  },
+  "news": {
+    "title": "Uğurlarımız",
+    "project": "Layihə",
+    "satisfaction": "Məmnunluq",
+    "description": "Biz irriqasiya sistemləri, torpaq analizi, gübrələmə və texniki məsləhətlər üzrə innovativ həllər təqdim edirik.",
+    "description2": "AGRIMAN komandası olaraq 150-dən çox layihədə sübut etmişik ki, müasir kənd təsərrüfatı yalnız texnika deyil – düzgün analiz, peşəkar planlama və davamlı dəstək tələb edir."
+  },
+  "contact_us": "Əlaqə saxlayın"
+
  
 }

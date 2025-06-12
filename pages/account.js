@@ -18,6 +18,7 @@ import {
   getSocialLinks,
 } from "@/lib/api";
 import Head from "next/head";
+import UserAccountSection from "@/components/UserAccountSection";
 
 export async function getServerSideProps(context) {
   const lang = context.locale || "az";
@@ -149,74 +150,9 @@ export default function Home({
         <meta property="og:url" content="https://yourwebsite.com" />
       </Head>
 
-      <main className="relative rounded-b-4xl overflow-hidden pb-52 md:pb-46 lg:pb-40">
-        <div className="absolute inset-0 z-0">
-          {bgUrl && (
-            <div
-              className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: `url("${bgUrl}")` }}
-            />
-          )}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/50" />
-        </div>
+      <Header categories={categories?.data} settings={settings} />
 
-        <div className="relative">
-          <Header categories={categories?.data} settings={settings} />
-
-          <div className="relative z-10">
-            <Hero
-              slidesData={slidesData}
-              currentSlide={currentSlide}
-              setCurrentSlide={setCurrentSlide}
-              heroData={heroData}
-              breadcrumbData={breadcrumbData}
-            />
-          </div>
-        </div>
-      </main>
-
-      <div className="relative -mt-20 md:-mt-46 z-30 ">
-        <Container>
-          {firstComponentIsServices ? (
-            <Services data={servicesCategory} />
-          ) : (
-            
-            <Systems data={systemsCategory} />
-          )}
-        </Container>
-      </div>
-
-      <div>
-        {categoryOrder.map((categoryName) => {
-          if (categoryName === firstCategory) return null;
-
-          if (categoryName === "xidmetler") {
-            return (
-              <Container key="services">
-                <Services data={servicesCategory} />
-              </Container>
-            );
-          } else if (categoryName === "suvarma") {
-            return (
-              <Container key="systems">
-                <Systems data={systemsCategory} />
-              </Container>
-            );
-          }
-
-          return null;
-        })}
-      </div>
-
-      <Container>
-        <LogoMarquee projects={projects} />
-      </Container>
-
-      <div className="relative z-10">
-        <Container>
-          <BlogSection blogs={blogs} />
-        </Container>
-      </div>
+      <UserAccountSection />
 
       <div className="relative lg:-mt-6 z-20">
         <Container>

@@ -122,9 +122,9 @@ function ContactUsSection({ data, contact }) {
           <path
             d="M1.55273 2.2132L22.727 16.6037L43.9012 2.2132"
             stroke="#90A674"
-            stroke-width="3"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
         </svg>
       </div>
@@ -139,27 +139,11 @@ function ContactUsSection({ data, contact }) {
           </p>
 
           <div className="flex flex-col mt-6 gap-2 md:gap-3 border-l-4 pl-5 text-sm md:text-lg border-brand py-2">
-            <p>Email: {data.email}</p>
-            <p>Telefon: {data.phone}</p>
-            <p>İş saatları: {data.working_hour}</p>
+            <p>{t("contact.email")}: {data.email}</p>
+            <p>{t("contact.phone")}: {data.phone}</p>
+            <p>{t("contact.working_hour")}: {data.working_hour}</p>
           </div>
-          <button className="relative py-2 md:py-3 px-5 md:px-7 mt-5 w-[120px] md:w-[140px] font-archivo text-sm md:text-base text-white rounded-4xl backdrop-blur-md bg-black mx-auto lg:mx-0">
-            {t("view_more")}
-            <span className="absolute left-[100px] md:left-[120px] top-1/2 -translate-y-1/2 bg-brand rounded-full px-2 py-1">
-              <svg
-                width="8"
-                height="15"
-                viewBox="0 0 8 15"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M7.50002 7.42893L0.428955 14.5L3.09807 7.33111L0.428955 0.357865L7.50002 7.42893Z"
-                  fill="white"
-                />
-              </svg>
-            </span>
-          </button>
+        
         </div>
         <div  className="w-full lg:w-1/2">
           <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4">
@@ -168,7 +152,7 @@ function ContactUsSection({ data, contact }) {
                 <input
                   type="text"
                   name="name"
-                  placeholder="Name"
+                  placeholder={t("contact.name")}
                   value={formData.name}
                   onChange={handleChange}
                   className={`w-full px-4 py-2 md:py-3 rounded-2xl border ${
@@ -183,7 +167,7 @@ function ContactUsSection({ data, contact }) {
                 <input
                   type="text"
                   name="surname"
-                  placeholder="Surname"
+                  placeholder={t("contact.surname")}
                   value={formData.surname}
                   onChange={handleChange}
                   className={`w-full px-4 py-2 md:py-3 rounded-2xl border ${
@@ -199,7 +183,7 @@ function ContactUsSection({ data, contact }) {
               <input
                 type="email"
                 name="email"
-                placeholder="Email"
+                placeholder={t("contact.email")}
                 value={formData.email}
                 onChange={handleChange}
                 className={`w-full px-4 py-2 md:py-3 rounded-2xl border ${
@@ -214,7 +198,7 @@ function ContactUsSection({ data, contact }) {
               <input
                 type="tel" // Changed to tel for phone numbers
                 name="phone"
-                placeholder="Phone Number"
+                placeholder={t("contact.phone")}
                 value={formData.phone}
                 onChange={handleChange}
                 className={`w-full px-4 py-2 md:py-3 rounded-2xl border ${
@@ -229,7 +213,7 @@ function ContactUsSection({ data, contact }) {
               <input
                 type="text"
                 name="about"
-                placeholder="About"
+                placeholder={t("contact.about")}
                 value={formData.about}
                 onChange={handleChange}
                 className={`w-full px-4 py-2 md:py-3 rounded-2xl border ${
@@ -243,7 +227,7 @@ function ContactUsSection({ data, contact }) {
             <div>
               <textarea
                 name="message"
-                placeholder="Message"
+                  placeholder={t("contact.message")}
                 rows={4}
                 value={formData.message}
                 onChange={handleChange}

@@ -1,10 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/router";
+import React from "react";
 
 const Footer = ({ settings, contact, socialLinks }) => {
+  console.log(contact, "contact");
+
   const router = useRouter();
 
   const { t } = useTranslation();
@@ -26,8 +28,11 @@ const Footer = ({ settings, contact, socialLinks }) => {
             />
           </div>
           <div className="flex items-center gap-4 mb-6">
-            <p className="text-2xl text-brand font-archivo">*3399</p>
-            <p className="border-b-2 border-brand h-2 w-[100px]"></p>
+            <p className="text-2xl text-brand font-archivo">
+              {" "}
+              {contact?.phone_2}
+            </p>
+            <p className="border-b-2 border-brand h-2 w-[100px]"> </p>
           </div>
         </div>
 
@@ -66,18 +71,22 @@ const Footer = ({ settings, contact, socialLinks }) => {
           <div>
             <h3 className="text-xl font-semibold mb-4"> {t("company")}</h3>
             <ul className="space-y-3">
-              {["Services", "Suvarma", "About", "Portfolio", "News / blog"].map(
-                (item) => (
-                  <li key={item}>
-                    <Link
-                      href={`/${item.toLowerCase().replace(" / ", "-")}`}
-                      className="text-gray-400 hover:text-brand transition-colors duration-200"
-                    >
-                      {item}
-                    </Link>
-                  </li>
-                )
-              )}
+              {[
+                t("nav.services"),
+                t("nav.suvarma"),
+                t("nav.about"),
+                t("nav.portfolio"),
+                t("nav.news_blog"),
+              ].map((item) => (
+                <li key={item}>
+                  <Link
+                    href={`/${item.toLowerCase().replace(" / ", "-")}`}
+                    className="text-gray-400 hover:text-brand transition-colors duration-200"
+                  >
+                    {item}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 

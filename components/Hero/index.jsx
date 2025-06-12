@@ -25,7 +25,7 @@ function Hero({
       setCurrentSlide(
         (prev) => (prev + 1) % (heroData?.length || slidesData.length)
       );
-    }, 5000);
+    }, 8000);
 
     return () => clearInterval(interval);
   }, [isAutoPlaying, heroData, slidesData.length, setCurrentSlide]);
@@ -127,9 +127,29 @@ function Hero({
 
   return (
     <Container>
-      <div data-aos="fade-up" className="w-full mt-20 flex flex-col lg:flex-row justify-between items-center h-[380px] md:h-[600px]">
-        <div  className=" flex max-w-[700px] flex-col-reverse md:flex-col pt-10 md:pt-2 text-white mb-20 lg:mb-0 w-full lg:w-auto text-center lg:text-left">
-          <button
+      <div data-aos="fade-up" className="w-full mt-20 flex flex-col justify-center lg:flex-row md:justify-between items-center h-[580px] md:h-[600px]">
+        <div  className=" flex max-w-[700px] flex-col md:flex-col pt-10 md:pt-2 text-white  lg:mb-0 w-full lg:w-auto text-center lg:text-left">
+       
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-arimo font-medium leading-snug pb-4 sm:pb-6 lg:pb-6">
+            {currentHeroData?.heroTitle || currentHeroData?.title}
+          </h1>
+          <div  className="flex items-start gap-4">
+            {/* Visible Vertical Line */}
+            <div className="w-[3px] md:w-[5px] bg-[#5E7740] rounded-full self-stretch" />
+
+            {/* Paragraph */}
+            <p
+              className="text-base sm:text-lg font-archivo font-normal tracking-wide pb-6 sm:pb-8 lg:pb-9"
+              dangerouslySetInnerHTML={{
+                __html:
+                  currentHeroData?.heroDesc ||
+                  currentHeroData?.description ||
+                  "",
+              }}
+            />
+            
+          </div>
+             <button
             onClick={() => router.push("/contact")}
             className="relative cursor-pointer py-3 px-7 mb-6 w-[140px] font-archivo text-base text-white rounded-4xl bg-[#5E7740] mx-auto lg:mx-0"
           >
@@ -149,31 +169,13 @@ function Hero({
               </svg>
             </span>
           </button>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-arimo font-medium leading-snug pb-4 sm:pb-6 lg:pb-6">
-            {currentHeroData?.heroTitle || currentHeroData?.title}
-          </h1>
-          <div  className="flex items-start gap-4">
-            {/* Visible Vertical Line */}
-            <div className="w-[3px] md:w-[5px] bg-[#5E7740] rounded-full self-stretch" />
-
-            {/* Paragraph */}
-            <p
-              className="text-base sm:text-lg font-archivo font-normal tracking-wide pb-6 sm:pb-8 lg:pb-9"
-              dangerouslySetInnerHTML={{
-                __html:
-                  currentHeroData?.heroDesc ||
-                  currentHeroData?.description ||
-                  "",
-              }}
-            />
-          </div>
         </div>
 
         <div 
 
       
-          className="relative hidden lg:flex w-full max-w-[300px]"
-          style={{ transform: "translateX(-100px) translateY(70px)" }} 
+          className="relative hidden lg:flex w-full max-w-[270px]"
+          style={{ transform: "translateX(-200px) translateY(-30px)" }} 
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
@@ -188,18 +190,18 @@ function Hero({
             }
           }}
         >
-          <div className="absolute inset-0 bg-white/5 backdrop-blur-2xl rounded-4xl transform scale-110 -z-10"></div>
+        <div className="absolute top-0 right-[-4px] bottom-0 left-[-4px]  bg-white/5 backdrop-blur-[10px] rounded-4xl transform scale-110 -z-10"></div>
 
           <div
                  
             ref={sliderRef}
-            className="bg-white w-full py-4 px-2  rounded-3xl relative transition-all duration-300 ease-out z-10 shadow-lg"
+            className="bg-white w-full py-3 px-3  rounded-3xl relative transition-all duration-300 ease-out z-10 shadow-lg"
           >
             <Image
               alt="Slide Image"
               width={300}
               height={200}
-              className="w-full h-[240px] object-cover rounded-3xl mb-4"
+              className="w-full h-[200px] object-cover rounded-3xl mb-4"
               src={
                 breadcrumbData?.thumb_image ||
                 breadcrumbData?.image ||
@@ -207,12 +209,15 @@ function Hero({
               }
             />
             <div className="flex justify-around items-center my-3">
-              <p className="text-2xl font-archivo text-neutral-950">
+              <p className="text-[20px] font-archivo text-neutral-950">
                 {breadcrumbData?.title || "Portfolio"}
               </p>
+             
               <button
-                className="relative cursor-pointer py-3 px-8 font-archivo text-base text-white rounded-4xl bg-black hover:bg-gray-800 transition-colors duration-300"
+                className="relative cursor-pointer py-[10px] px-6 font-archivo text-base text-white rounded-4xl bg-black hover:bg-gray-800 transition-colors duration-300"
                 aria-label="View all portfolio items"
+                onClick={() => router.push("/about")}
+
               >
                 {t("view_more")}
                 <span className="absolute p-2 right-0 top-1/2 -translate-y-1/2 translate-x-1/2 bg-brand rounded-full">
@@ -234,7 +239,7 @@ function Hero({
 
             <div className="flex justify-around items-center font-archivo my-4">
               <div className="flex flex-col gap-1 text-black">
-                <p className="text-4xl sm:text-5xl font-archivo font-semibold">
+                <p className="text-4xl sm:text-4xl font-archivo font-semibold">
                   {breadcrumbData?.number_1 ||
                     slidesData[currentSlide]?.stats?.projects ||
                     "150+"}
@@ -244,7 +249,7 @@ function Hero({
                 </p>
               </div>
               <div className="flex flex-col gap-1 text-black">
-                <p className="text-4xl sm:text-5xl font-archivo font-semibold">
+                <p className="text-4xl sm:text-4xl font-archivo font-semibold">
                   {breadcrumbData?.number_2 ||
                     slidesData[currentSlide]?.stats?.satisfaction ||
                     "99%"}
@@ -255,7 +260,7 @@ function Hero({
               </div>
             </div>
 
-            <p className="text-neutral-400 text-sm mb-4 px-5 font-archivo">
+            <p className="text-neutral-400 text-sm mb-0 px-3 font-archivo">
               {breadcrumbData?.description ||
                 slidesData[currentSlide]?.description ||
                 "We provide innovative solutions for irrigation systems, soil analysis, fertilization and technical advice."}

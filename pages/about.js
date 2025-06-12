@@ -1,12 +1,10 @@
 import { useState } from "react";
 import Header from "@/components/Header";
 import Container from "@/components/Container";
-import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
-import HeroAbout from "@/components/HeroAbout";
-import ServicesPageSection from "@/components/ServicesPageSection";
-import LogoMarquee from "@/components/LogoMarquee";
 import AboutSection from "@/components/AboutSection";
+import React from "react";
+
 import {
   getAbout,
   getBanner,
@@ -135,7 +133,7 @@ export default function About({
         <meta property="og:image" content={settings?.logo?.logo} />
         <meta property="og:url" content="https://yourwebsite.com" />
       </Head>
-      <main className="relative rounded-b-4xl overflow-hidden">
+      <main className="relative rounded-b-4xl  overflow-hidden">
         <div className="absolute inset-0 z-0">
           {bgUrl && (
             <div

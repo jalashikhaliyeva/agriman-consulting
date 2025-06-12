@@ -14,6 +14,12 @@
     padding: 0 40px;
   }
 }
+@media (min-width: 360px) {
+  .container {
+    max-width: calc(640px - 20);
+    padding: 0 20px;
+  }
+}
 
 /* For screens larger than 768px (md) */
 @media (min-width: 768px) {

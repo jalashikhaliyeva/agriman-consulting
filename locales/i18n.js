@@ -3,7 +3,6 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import translationEN from "./en/translation.json";
-// import translationRU from "./ru/translation.json";
 import translationAZ from "./az/translation.json";
 import translationRU from "./ru/translation.json";
 
@@ -29,8 +28,8 @@ i18n
     supportedLngs: ["en", "az", "ru"],
     fallbackLng: "az",
     detection: {
-      order: ["localStorage", "cookie", "htmlTag", "path", "subdomain"],
-      caches: ["localStorage", "cookie"],
+      order: ["cookie", "htmlTag", "path", "subdomain"],
+      caches: ["cookie"],
     },
   })
   .then(() => console.log("i18n initialized successfully"))

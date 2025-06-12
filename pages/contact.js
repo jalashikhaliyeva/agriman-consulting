@@ -1,12 +1,8 @@
-import { useState } from "react";
 import Header from "@/components/Header";
 import Container from "@/components/Container";
-import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
-import HeroAbout from "@/components/HeroAbout";
+import React from "react";
 
-import ServicesPageSection from "@/components/ServicesPageSection";
-import LogoMarquee from "@/components/LogoMarquee";
 import ContactUsSection from "@/components/ContactUsSection";
 import {
   getCategories,
@@ -16,7 +12,6 @@ import {
   getSettings,
   getSocialLinks,
 } from "@/lib/api";
-import HeroAboutSingle from "@/components/HeroAboutSingle";
 import Head from "next/head";
 import LogoMarqueeSecond from "@/components/LogoMarqueeSecond";
 import HeroAboutSingleContact from "@/components/HeroAboutSingleContact";

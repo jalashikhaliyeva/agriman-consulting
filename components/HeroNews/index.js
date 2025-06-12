@@ -1,7 +1,7 @@
 import React from "react";
 import Container from "../Container";
 
-function HeroAboutSingleContact({ data }) {
+function HeroNews({ data }) {
   return (
     <Container>
       <div className="w-full mt-20 flex flex-col lg:flex-row justify-between items-center h-[380px] md:h-[600px] py-10 lg:py-0">
@@ -31,4 +31,4 @@ function HeroAboutSingleContact({ data }) {
   );
 }
 
-export default HeroAboutSingleContact;
+export default HeroNews;

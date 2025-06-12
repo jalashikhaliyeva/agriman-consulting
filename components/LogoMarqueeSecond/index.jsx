@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
+import React from "react";
 
 export default function LogoMarqueeSecond({ projects }) {
   const { t } = useTranslation();
@@ -44,7 +45,7 @@ export default function LogoMarqueeSecond({ projects }) {
                       height={200}
                       src={logo.image}
                       alt={logo.name}
-                      className="w-[80px] max-w-full object-contain"
+                      className="w-[90px] max-w-full object-contain grayscale hover:grayscale-0"
                     />
                   </a>
                 ))}
@@ -63,12 +64,15 @@ export default function LogoMarqueeSecond({ projects }) {
             transform: translateX(-50%);
           }
         }
+        .grayscale {
+          filter: grayscale(100%); 
+        }
 
         .animate-marquee {
           animation: marquee 38s linear infinite;
           will-change: transform;
           display: flex;
-          width: max-content; /* Ensures the container expands with content */
+          width: max-content; 
         }
       `}</style>
     </div>
